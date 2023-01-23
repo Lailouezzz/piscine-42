@@ -3,30 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   c_main.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-boud <alanlebouder@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 15:01:14 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/01/23 17:53:20 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/01/23 23:50:45 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/01/23 23:54:10 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "c_strlcat.h"
+#include "c_atoi_base.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char			s1[15];
-	char			*s2;
-	unsigned int	r;
-
-	s1[0] = 'c';
-	s1[1] = 'o';
-	s1[2] = 'n';
-	s1[3] = 'c';
-	s1[4] = '\0';
-	s2 = "at";
-	r = ft_strlcat(s1, s2, 5);
-	printf("%s : %u\n", s1, r);
+	if (argc != 3)
+		return (0);
+	printf("ft_atoi_base(\"%s\", \"%s\") == %i\n", argv[1], argv[2],
+		ft_atoi_base(argv[1], argv[2]));
 	return (0);
 }

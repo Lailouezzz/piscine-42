@@ -3,30 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   c_main.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-boud <alanlebouder@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 15:01:14 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/01/23 17:53:20 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/01/23 22:43:38 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/01/23 22:45:14 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include "c_strlcat.h"
+#include <limits.h>
+#include "c_putnbr.h"
 
 int	main(void)
 {
-	char			s1[15];
-	char			*s2;
-	unsigned int	r;
-
-	s1[0] = 'c';
-	s1[1] = 'o';
-	s1[2] = 'n';
-	s1[3] = 'c';
-	s1[4] = '\0';
-	s2 = "at";
-	r = ft_strlcat(s1, s2, 5);
-	printf("%s : %u\n", s1, r);
+	ft_putnbr(0);
+	ft_putnbr(-1);
+	ft_putnbr(1);
+	ft_putnbr(INT_MAX);
+	ft_putnbr(INT_MIN);
+	ft_putnbr(42);
 	return (0);
 }
