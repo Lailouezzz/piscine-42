@@ -6,7 +6,7 @@
 /*   By: ale-boud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:35:49 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/01/24 14:40:16 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/01/24 20:06:08 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	ft_is_prime(int nb)
 
 	if (nb == 2)
 		return (1);
-	if (nb == 1 || nb == 0 || nb % 2 == 0)
+	if (nb < 2 || nb % 2 == 0)
 		return (0);
 	div = 3;
-	while (div < nb / 2)
+	while (div <= nb / 2)
 	{
 		if (nb % div == 0)
 			return (0);
