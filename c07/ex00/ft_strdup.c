@@ -1,25 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_main.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 22:43:38 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/01/24 14:03:57 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/01/25 17:05:01 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/01/25 17:08:59 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
-#include "c_putnbr.h"
+#include <stdlib.h>
 
-int	main(void)
+int	ft_strlen(char *str)
 {
-	ft_putnbr(58);
-	ft_putnbr(-1);
-	ft_putnbr(1);
-	ft_putnbr(INT_MAX);
-	ft_putnbr(INT_MIN);
-	ft_putnbr(42);
-	return (0);
+	int	k;
+
+	k = 0;
+	while (str[k] != '\0')
+		++k;
+	return (k);
+}
+
+char	*ft_strdup(char *src)
+{
+	char	*dest;
+	char	*p;
+
+	dest = malloc(ft_strlen(src) + 1);
+	if (dest == NULL)
+		return (NULL);
+	p = dest;
+	while (*src != '\0')
+	{
+		*dest = *src;
+		++src;
+		++dest;
+	}
+	*dest = '\0';
+	return (p);
 }

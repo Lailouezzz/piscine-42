@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_main.c                                           :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 22:43:38 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/01/24 14:03:57 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/01/25 17:28:33 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/01/25 17:37:41 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
-#include "c_putnbr.h"
+#include <stdlib.h>
 
-int	main(void)
+int	ft_ultimate_range(int **range, int min, int max)
 {
-	ft_putnbr(58);
-	ft_putnbr(-1);
-	ft_putnbr(1);
-	ft_putnbr(INT_MAX);
-	ft_putnbr(INT_MIN);
-	ft_putnbr(42);
-	return (0);
+	int	n;
+	int	k;
+
+	if (max <= min)
+	{
+		*range = NULL;
+		return (0);
+	}
+	n = max - min;
+	*range = malloc(n * sizeof(**range));
+	if (*range == NULL)
+		return (-1);
+	k = 0;
+	while (min < max)
+	{
+		(*range)[k] = min;
+		++min;
+		++k;
+	}
+	return (k);
 }

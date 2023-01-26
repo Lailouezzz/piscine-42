@@ -6,7 +6,7 @@
 /*   By: ale-boud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:35:49 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/01/24 20:06:08 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:44:32 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	ft_is_prime(int nb)
 
 int	ft_find_next_prime(int nb)
 {
+	if (nb <= 2)
+		return (2);
 	while (!ft_is_prime(nb))
 		++nb;
 	return (nb);
