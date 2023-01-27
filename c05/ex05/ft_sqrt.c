@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:09:09 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/01/25 16:57:56 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/01/26 21:58:54 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	ft_sqrt(int nb)
 
 	if (nb < 0)
 		return (0);
-	sq = 0;
-	while (sq * sq <= nb && sq <= nb / 2)
+	sq = 1;
+	while (sq <= nb / sq)
 	{
 		if (sq * sq == nb)
 			return (sq);
