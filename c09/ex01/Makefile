@@ -10,7 +10,7 @@ CFLAGS := -Wall -Wextra -Werror -I $(INCLUDES) -c
 all: $(LIB_A)
 
 clean:
-	rm -f srcs/*.o
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(LIB_A) 
@@ -23,4 +23,4 @@ $(LIB_A): $(OBJS)
 .c.o: $(SRCS)
 	gcc $(CFLAGS) -o $(<:.c=.o) $<
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re .c.o
