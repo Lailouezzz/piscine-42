@@ -6,7 +6,7 @@
 /*   By: ale-boud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:12:38 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/01/31 17:19:43 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/02/01 13:57:18 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,30 @@ void	ft_cat_printerr(char *pn, char *fn, char *serr)
 	ft_putstr(STDERR_FILENO, "\n");
 }
 
+char	g_buf[26 * 1024];
+
 /* return : always 0, dont call with fd == -1 ... */
 int	ft_cat_file(int fd)
 {
-	char	buf[30 * 1024];
 	ssize_t	s;
 
 	if (fd == -1)
 		return (-1);
-	s = read(fd, buf, sizeof(buf));
+	s = read(fd, g_buf, sizeof(g_buf));
 	while (s != 0)
 	{
-		write(STDOUT_FILENO, buf, s);
-		s = read(fd, buf, sizeof(buf));
+		write(STDOUT_FILENO, g_buf, s);
+		s = read(fd, g_buf, sizeof(g_buf));
 	}
 	return (0);
+}
+
+int	ft_cat_open(char *fn)
+{
+	if ((fn[0] == '-' && fn[1] == '\0')
+		|| (fn[0] == '-' && fn[1] == '-' && fn[2] == '\0'))
+		return (STDIN_FILENO);
+	return (open(fn, O_RDONLY));
 }
 
 int	ft_cat(char **fns, int size, char *pn)
@@ -55,7 +64,7 @@ int	ft_cat(char **fns, int size, char *pn)
 	k = 0;
 	while (k < size)
 	{
-		fd = open(fns[k], O_RDONLY);
+		fd = ft_cat_open(fns[k]);
 		if (fd == -1)
 		{
 			r = EXIT_FAILURE;
