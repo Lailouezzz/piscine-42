@@ -6,7 +6,7 @@
 /*   By: ale-boud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 23:01:27 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/02 23:12:39 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/02/03 01:30:41 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	main(int argc, char **argv)
 	if (tab == NULL)
 		return (EXIT_FAILURE);
 	print_int_tab(tab, argc - 1);
+	printf("\n");
 	ntab = ft_map(tab, argc - 1, &add5);
 	if (ntab == NULL)
 		return (EXIT_FAILURE);
