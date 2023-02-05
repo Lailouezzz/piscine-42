@@ -4,25 +4,25 @@ OBJ_DIR := build
 SRCS := $(wildcard $(SRC_DIR)/*.c)
 OBJS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 
-BIN := rush-02
+NAME := rush-02
 
 CFLAGS := -Wall -Wextra -Werror -g -I $(INC_DIR)
 
-all: $(BIN)
+all: $(NAME)
 
-LD := gcc
+LD := cc
 
-CC := gcc
+CC := cc
 
 clean:
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(BIN)
+	rm -f $(NAME)
 
 re: fclean all
 
-$(BIN): $(OBJS)
+$(NAME): $(OBJS)
 	$(LD) -o $@ $^
 	norminette -R CheckDefine
 

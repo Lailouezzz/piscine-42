@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-boud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 11:51:23 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/04 11:51:33 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/02/05 01:06:33 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	*ft_realloc(void *src, size_t size, size_t newsize)
 		((char *)dst)[k] = ((char *)src)[k];
 		++k;
 	}
+	free(src);
 	return (dst);
 }

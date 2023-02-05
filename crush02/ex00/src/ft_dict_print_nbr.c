@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dict_itoa.c                                     :+:      :+:    :+:   */
+/*   ft_dict_print_nbr.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:06:06 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/04 20:39:58 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/02/05 01:09:02 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
-#include <stdio.h>
 
-t_listentry	*ft_dict_itoa_aux(t_dict *dict, unsigned int nbr, t_listentry *le)
+t_listentry	*ft_dict_print_nbr_aux(t_dict *dict, unsigned int nbr,
+	t_listentry *le)
 {
 	t_dictentry	*e;
 
@@ -24,29 +24,42 @@ t_listentry	*ft_dict_itoa_aux(t_dict *dict, unsigned int nbr, t_listentry *le)
 		{
 			le = ft_listentry_pushafter(le, e);
 			ft_listentry_pushbefore_le(
-				le, ft_dict_itoa_aux(dict, nbr / e->key, NULL));
+				le, ft_dict_print_nbr_aux(dict, nbr / e->key, NULL));
 			nbr %= e->key;
 		}
 		else
 		{
 			le = ft_listentry_pushafter(le, e);
-			return (ft_dict_itoa_aux(dict, nbr - e->key, le));
+			return (ft_dict_print_nbr_aux(dict, nbr - e->key, le));
 		}
 	}
 	return (le);
 }
 
-char	*ft_dict_itoa(t_dict *dict, unsigned int nbr)
+int	ft_dict_print_nbr(t_dict *dict, unsigned int nbr)
 {
 	t_list		*l;
-	t_listentry	*le;
+	t_listentry	*it;
 
-	l = ft_list_create(ft_dict_itoa_aux(dict, nbr, NULL));
-	le = l->begin;
-	while (le != NULL)
+	if (nbr == 0)
 	{
-		printf("%s ", le->entry->s);
-		le = le->after;
+		ft_putstr(STDOUT_FILENO, dict->entries[0].s);
+		ft_putstr(STDOUT_FILENO, "\n");
+		return (0);
 	}
-	return (NULL);
+	l = ft_list_create(ft_dict_print_nbr_aux(dict, nbr, NULL));
+	if (l == NULL)
+		return (-1);
+	it = l->begin;
+	ft_putstr(STDOUT_FILENO, it->entry->s);
+	it = it->after;
+	while (it != NULL)
+	{
+		ft_putstr(STDOUT_FILENO, " ");
+		ft_putstr(STDOUT_FILENO, it->entry->s);
+		it = it->after;
+	}
+	ft_list_free(l);
+	ft_putstr(STDOUT_FILENO, "\n");
+	return (0);
 }
