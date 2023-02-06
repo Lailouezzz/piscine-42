@@ -30,4 +30,4 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-.PHONY: all clean fclean re .c.o
+.PHONY: all clean fclean re

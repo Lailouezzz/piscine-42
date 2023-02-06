@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 11:05:05 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/05 02:12:35 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/02/05 18:22:15 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int			ft_dict_check(const t_dict *dict);
 /* sort the dict->entries list */
 void		ft_dict_sort(t_dict *dict);
 
-/* return : NULL if you suck :)
+/* return : NULL if you s*ck :)
  * 		or the entry of the biggest key before nbr */
 t_dictentry	*ft_dict_biggestentry(t_dict *dict, unsigned int nbr);
 
