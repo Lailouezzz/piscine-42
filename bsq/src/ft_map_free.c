@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_foreach.h                                        :+:      :+:    :+:   */
+/*   ft_map_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 22:29:20 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/06 22:51:19 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/07 17:02:56 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/07 17:04:04 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  C_FOREACH_H
-# define C_FOREACH_H
+#include "ft.h"
 
-void	ft_foreach(int *tab, int length, void (*f)(int));
-
-#endif
+void	*ft_map_free(t_map *map)
+{
+	if (map == NULL)
+		return (NULL);
+	if (map->tmap != NULL)
+		free(map->tmap);
+	free(map);
+	return (NULL);
+}

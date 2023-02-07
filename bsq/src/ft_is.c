@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_foreach.h                                        :+:      :+:    :+:   */
+/*   ft_is.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 22:29:20 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/06 22:51:19 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/04 12:18:06 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/04 13:17:16 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  C_FOREACH_H
-# define C_FOREACH_H
+#include "ft.h"
 
-void	ft_foreach(int *tab, int length, void (*f)(int));
+int	ft_isdigit(char c)
+{
+	return (c >= '0' && c <= '9');
+}
 
-#endif
+int	ft_isprintable(char c)
+{
+	return (c >= 0x20 && c <= 0x7E);
+}
+
+int	ft_istpoint(char c)
+{
+	return (c == ':');
+}
+
+int	ft_isspace(char c)
+{
+	return (c == ' ');
+}

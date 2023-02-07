@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_foreach.h                                        :+:      :+:    :+:   */
+/*   ft_list_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 22:29:20 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/06 22:51:19 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/07 21:25:51 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/07 21:40:50 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  C_FOREACH_H
-# define C_FOREACH_H
+#include <stdlib.h>
+#include "ft_list.h"
 
-void	ft_foreach(int *tab, int length, void (*f)(int));
+void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+{
+	t_list	*tofree;
 
-#endif
+	if (begin_list == NULL)
+		return ;
+	tofree = begin_list;
+	while (tofree != NULL)
+	{
+		begin_list = tofree;
+		if (free_fct != NULL)
+			free_fct(tofree->data);
+		tofree = tofree->next;
+		free(begin_list);
+	}
+}

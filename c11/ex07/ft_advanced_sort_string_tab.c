@@ -1,18 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_foreach.h                                        :+:      :+:    :+:   */
+/*   ft_advanced_sort_string_tab.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 22:29:20 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/06 22:51:19 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/06 22:39:28 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/07 19:21:36 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  C_FOREACH_H
-# define C_FOREACH_H
+#include <stddef.h>
 
-void	ft_foreach(int *tab, int length, void (*f)(int));
+void	ft_swap(char **a, char **b)
+{
+	char	*t;
 
-#endif
+	t = *a;
+	*a = *b;
+	*b = t;
+}
+
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
+{
+	int	tabsize;
+	int	k;
+
+	tabsize = 0;
+	while (tab[tabsize] != NULL)
+		++tabsize;
+	k = 0;
+	while (k < tabsize - 1)
+	{
+		if (cmp(tab[k], tab[k + 1]) > 0)
+		{
+			ft_swap(&tab[k], &tab[k + 1]);
+			k = 0;
+		}
+		else
+			++k;
+	}
+}

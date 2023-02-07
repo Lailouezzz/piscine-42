@@ -1,18 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_foreach.h                                        :+:      :+:    :+:   */
+/*   ft_list_push_strs.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 22:29:20 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/06 22:51:19 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/07 21:20:45 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/07 21:45:07 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  C_FOREACH_H
-# define C_FOREACH_H
+#include <stddef.h>
+#include "ft_list.h"
 
-void	ft_foreach(int *tab, int length, void (*f)(int));
+t_list	*ft_list_push_strs(int size, char **strs)
+{
+	t_list	*l;
+	t_list	*begin_list;
+	int		k;
 
-#endif
+	if (size == 0 || *strs == NULL)
+		return (NULL);
+	begin_list = NULL;
+	k = 0;
+	while (k < size)
+	{
+		l = ft_create_elem(strs[k]);
+		if (l != NULL)
+		{
+			l->next = begin_list;
+			begin_list = l;
+		}
+		else
+			return (begin_list);
+		++k;
+	}
+	return (begin_list);
+}

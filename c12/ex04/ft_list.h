@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_foreach.h                                        :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 22:29:20 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/06 22:51:19 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/07 20:48:35 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/07 21:19:38 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  C_FOREACH_H
-# define C_FOREACH_H
+#ifndef  FT_LIST_H
+# define FT_LIST_H
 
-void	ft_foreach(int *tab, int length, void (*f)(int));
+typedef struct s_list {
+	struct s_list	*next;
+	void			*data;
+}	t_list;
+
+t_list	*ft_create_elem(void *data);
+
+void	ft_list_push_front(t_list **begin_list, void *data);
+
+int		ft_list_size(t_list *begin_list);
+
+t_list	*ft_list_last(t_list *begin_list);
+
+void	ft_list_push_back(t_list **begin_list, void *data);
 
 #endif

@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_foreach.h                                        :+:      :+:    :+:   */
+/*   ft_list_at.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 22:29:20 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/06 22:51:19 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/07 21:30:53 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/07 21:37:43 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  C_FOREACH_H
-# define C_FOREACH_H
+#include <stddef.h>
+#include "ft_list.h"
 
-void	ft_foreach(int *tab, int length, void (*f)(int));
+t_list	*ft_list_at(t_list *begin_list, unsigned int nbr)
+{
+	unsigned int	k;
 
-#endif
+	k = 0;
+	while (k < nbr && begin_list != NULL)
+	{
+		begin_list = begin_list->next;
+		++k;
+	}
+	return (begin_list);
+}

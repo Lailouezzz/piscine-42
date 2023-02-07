@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_foreach.h                                        :+:      :+:    :+:   */
+/*   ft_getchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-boud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 22:29:20 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/06 22:51:19 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/04 11:49:54 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/04 11:50:55 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  C_FOREACH_H
-# define C_FOREACH_H
+#include "ft.h"
 
-void	ft_foreach(int *tab, int length, void (*f)(int));
+/* return : -1 if EOF or error | the char */
+int	ft_getchar(int fd)
+{
+	char	c;
+	ssize_t	r;
 
-#endif
+	r = read(fd, &c, 1);
+	if (r != 1)
+		return (-1);
+	return ((int)c);
+}

@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_foreach.h                                        :+:      :+:    :+:   */
+/*   ft_list_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 22:29:20 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/06 22:51:19 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/07 21:05:41 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/07 21:07:00 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  C_FOREACH_H
-# define C_FOREACH_H
+#include <stddef.h>
+#include "ft_list.h"
 
-void	ft_foreach(int *tab, int length, void (*f)(int));
+int	ft_list_size(t_list *begin_list)
+{
+	int	k;
 
-#endif
+	k = 0;
+	while (begin_list != NULL)
+	{
+		++k;
+		begin_list = begin_list->next;
+	}
+	return (k);
+}

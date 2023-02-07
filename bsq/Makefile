@@ -6,7 +6,7 @@ SRCS := $(wildcard $(SRC_DIR)/*.c)
 OBJS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 
 CC := cc
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -I $(INC_DIR)
 
 LD := cc
 
@@ -26,6 +26,8 @@ re: fclean all
 
 $(NAME): $(OBJS)
 	$(LD) -o $@ $^
+	norminette -R CheckDefine
 
-$(OBJ_DIR)/%.o: %(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c -o $@ $<

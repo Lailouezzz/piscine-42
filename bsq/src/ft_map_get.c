@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_foreach.h                                        :+:      :+:    :+:   */
+/*   ft_map_get.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 22:29:20 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/06 22:51:19 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/07 16:54:30 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/07 17:02:15 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  C_FOREACH_H
-# define C_FOREACH_H
+#include "ft.h"
 
-void	ft_foreach(int *tab, int length, void (*f)(int));
-
-#endif
+t_tile	*ft_map_get(t_map *map, size_t x, size_t y)
+{
+	if (x >= map->width || y >= map->height)
+		return (NULL);
+	return (&map->tmap[x + (y * map->width)]);
+}

@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_foreach.h                                        :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 22:29:20 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/06 22:51:19 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/04 11:51:23 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/05 01:06:33 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  C_FOREACH_H
-# define C_FOREACH_H
+#include "ft.h"
 
-void	ft_foreach(int *tab, int length, void (*f)(int));
+void	*ft_realloc(void *src, size_t size, size_t newsize)
+{
+	void	*dst;
+	size_t	k;
 
-#endif
+	dst = malloc(newsize);
+	k = 0;
+	while (k < size)
+	{
+		((char *)dst)[k] = ((char *)src)[k];
+		++k;
+	}
+	free(src);
+	return (dst);
+}

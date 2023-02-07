@@ -1,0 +1,9 @@
+.vscode/
+bin/
+build/
+include/
+configure
+Makefile
+Makefile.*
+c_*.*
+main
