@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strisdigit.c                                    :+:      :+:    :+:   */
+/*   ft_is.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-boud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 17:18:22 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/01 17:20:04 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/09 15:35:00 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/09 15:37:25 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
-
-int	ft_strisdigit(char *s)
+int	ft_isdigit(char c)
 {
-	while (*s != '\0')
-	{
-		if (*s < '0' || *s > '9')
-			return (0);
-		++s;
-	}
-	return (1);
+	return (c >= '0' && c <= '9');
+}
+
+int	ft_stris(char *str, int (*f)(char))
+{
+	while (*str != '\0' && f(*str) != 0)
+		++str;
+	return (*str == '\0');
 }

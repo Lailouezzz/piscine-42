@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
+/*   ft_sorted_list_insert.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 21:55:42 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/07 22:13:20 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/07 23:55:55 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/08 17:10:33 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include "ft_list.h"
 
-void	ft_list_foreach(t_list *begin_list, void (*f)(void *))
+void	ft_sorted_list_insert(t_list **begin_list, void *data, int (*cmp)())
 {
-	while (begin_list != NULL)
+	t_list	*elem;
+
+	if (*begin_list != NULL && (*cmp)(data, (*begin_list)->data) <= 0)
 	{
-		(*f)(begin_list->data);
-		begin_list = begin_list->next;
+		elem = ft_create_elem(data);
+		if (elem == NULL)
+			return ;
+		elem->next = *begin_list;
+		(*begin_list) = elem;
+	}
+	else
+	{
+		ft_sorted_list_insert(&(*begin_list)->next, data, cmp);
 	}
 }

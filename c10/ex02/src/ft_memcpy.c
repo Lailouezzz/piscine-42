@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 21:55:42 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/07 22:13:20 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/09 16:43:43 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/09 16:44:35 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include "ft_list.h"
+#include "ft_tail.h"
 
-void	ft_list_foreach(t_list *begin_list, void (*f)(void *))
+void	ft_memcpy(void *dst, void *src, unsigned int size)
 {
-	while (begin_list != NULL)
+	while (size != 0)
 	{
-		(*f)(begin_list->data);
-		begin_list = begin_list->next;
+		*(char *)dst = *(char *)src;
+		--dst;
+		--src;
+		--size;
 	}
 }

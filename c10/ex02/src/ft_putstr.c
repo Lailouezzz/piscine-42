@@ -3,18 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-boud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 17:09:59 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/01/31 17:10:58 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/09 16:00:32 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/09 16:01:25 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
 #include <unistd.h>
+#include "ft_tail.h"
 
-void	ft_putstr(int fd, char *s)
+void	ft_putstr(int fd, char *str)
 {
-	while (*s != '\0')
-		write(fd, s++, 1);
+	while (*str != '\0')
+	{
+		write(fd, str, 1);
+		++str;
+	}
 }

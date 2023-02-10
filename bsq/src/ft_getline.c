@@ -6,11 +6,13 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 11:48:12 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/07 17:38:51 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/02/08 22:12:52 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
+
+#define LINE_LIMIT 8192
 
 /* return : string allocated by malloc of the line in fd */
 char	*ft_getline(int fd)
@@ -28,7 +30,7 @@ char	*ft_getline(int fd)
 		return (NULL);
 	allocl = 1;
 	k = 0;
-	while (c != -1 && c != '\n')
+	while (c != -1 && c != '\n' && k < LINE_LIMIT)
 	{
 		if (k + 1 >= allocl)
 		{

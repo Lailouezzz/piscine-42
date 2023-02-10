@@ -6,17 +6,18 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:36:29 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/07 17:22:59 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:48:51 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-/* return : if the header is not good */
+/* return : != 0 if the header is not good */
 int	ft_map_check_header(char *s)
 {
 	return (ft_skip_if(s, ft_isdigit) - s == 0
-		|| ft_strlen(ft_skip_if(s, ft_isdigit)) != 3);
+		|| ft_strlen(s) - 3 <= 0
+		|| ft_skip_if(s, ft_isprintable) - s != ft_strlen(s));
 }
 
 /* return : 0 if error */
@@ -24,12 +25,14 @@ int	ft_map_parse_header(t_map *map, char *h)
 {
 	if (ft_map_check_header(h))
 		return (0);
-	map->height = ft_atoi(h);
-	h = ft_skip_if(h, ft_isdigit);
+	map->height = ft_atoin(h, ft_strlen(h) - 3);
+	h += ft_strlen(h) - 3;
 	map->empty = h[0];
 	map->obstacle = h[1];
 	map->full = h[2];
-	return (h[3] == '\0' && map->height > 0);
+	return (h[3] == '\0' && map->height > 0
+		&& map->empty != map->obstacle && map->empty != map->full
+		&& map->obstacle != map->full);
 }
 
 /* return : 0 if error */
@@ -44,7 +47,7 @@ int	ft_map_parse_tmap_line(t_map *map, char *l, size_t y)
 	while (x < map->width)
 	{
 		t = ft_tile_by_char(map, l[x]);
-		if (t == TILE_UNK)
+		if (t == TILE_UNK || t == TILE_FULL)
 			return (0);
 		*(ft_map_get(map, x, y)) = t;
 		++x;

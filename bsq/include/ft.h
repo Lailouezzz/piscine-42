@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 10:51:11 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/07 15:46:33 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:46:48 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ char			*ft_getline(int fd);
 
 /* return : the integer in str */
 unsigned int	ft_atoi(char *str);
+
+/* return : the integer in str on n characters */
+unsigned int	ft_atoin(char *str, int n);
 
 /* return : -1 if overflow 0 if str can be encoded in a unsigned int */
 int				ft_atoip(char *str, unsigned int *i);

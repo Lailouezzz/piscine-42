@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoui.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 12:05:43 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/08 17:47:38 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/02/09 15:42:45 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/02/09 16:50:48 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "ft_tail.h"
 
-unsigned int	ft_atoi(char *str)
+unsigned int	ft_atoui(char *str)
 {
 	unsigned int	n;
 
@@ -24,38 +24,4 @@ unsigned int	ft_atoi(char *str)
 		++str;
 	}
 	return (n);
-}
-
-unsigned int	ft_atoin(char *str, int n)
-{
-	unsigned int	nb;
-
-	nb = 0;
-	while (ft_isdigit(*str) && n != 0)
-	{
-		nb *= 10;
-		nb += *str - '0';
-		++str;
-		--n;
-	}
-	return (nb);
-}
-
-int	ft_atoip(char *str, unsigned int *i)
-{
-	unsigned int	n;
-	unsigned int	o;
-
-	n = 0;
-	while (ft_isdigit(*str))
-	{
-		o = n;
-		n *= 10;
-		if (n / 10 != o)
-			return (-1);
-		n += *str - '0';
-		++str;
-	}
-	*i = n;
-	return (0);
 }

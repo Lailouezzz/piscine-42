@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:09:26 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/02/07 21:19:15 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/02/08 01:02:26 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ void	ft_list_push_back(t_list **begin_list, void *data)
 	if (l != NULL)
 	{
 		if (*begin_list != NULL)
-		{
 			_ft_list_last(*begin_list)->next = l;
-		}
 		else
 			*begin_list = l;
 	}
