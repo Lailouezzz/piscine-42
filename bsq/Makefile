@@ -26,7 +26,6 @@ re: fclean all
 
 $(NAME): $(OBJS)
 	$(LD) -o $@ $^
-	norminette -R CheckDefine
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(@D)
